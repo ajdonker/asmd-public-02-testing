@@ -1,10 +1,14 @@
 package devices;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class RandomFailing implements FailingPolicy {
-    private final Random random = new Random();
+    private final Random random; //inject random so i can mock it
     private boolean failed = false;
+    public RandomFailing(Random random) {
+        this.random = Objects.requireNonNull(random);
+    }
     @Override
     public boolean attemptOn() {
         this.failed = this.failed || random.nextBoolean();

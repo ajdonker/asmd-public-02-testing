@@ -33,10 +33,14 @@ public class DeviceTest {
         assertFalse(this.device.isOn());
     }
 
-    @Disabled
     @Test
     void cantSwitchOnIfAlreadyOn(){
         this.device.switchOn();
         assertThrows(IllegalStateException.class, () -> this.device.switchOn());
+    }
+
+    @Test
+    void cantSwitchOffIfAlreadyOff(){
+        assertThrows(IllegalStateException.class, () -> this.device.switchOff());
     }
 }

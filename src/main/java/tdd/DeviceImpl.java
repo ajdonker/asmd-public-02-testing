@@ -18,6 +18,9 @@ public class DeviceImpl implements Device {
 
     @Override
     public void switchOff() {
+        if(!this.on){
+            throw new IllegalStateException();
+        }
         this.on = false;
     }
 }
