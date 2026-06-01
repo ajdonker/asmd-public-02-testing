@@ -1,5 +1,6 @@
 package devices;
 
+import java.util.Random;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.*;
@@ -90,11 +91,12 @@ public class StandardDeviceTest {
     @Nested
     class ShowcaseSpies {
         private FailingPolicy spyFailingPolicy;
-
+        private Random random;
         @BeforeEach
         void init(){
             // the spy is essentially a proxy to the DOC, used to capture events
-            this.spyFailingPolicy = spy(new RandomFailing());
+            this.random = mock(Random.class);
+            this.spyFailingPolicy = spy(new RandomFailing(random));
             device = new StandardDevice(this.spyFailingPolicy);
         }
 
