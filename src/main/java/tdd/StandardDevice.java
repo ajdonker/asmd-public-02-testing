@@ -1,9 +1,12 @@
-package devices;
+package tdd;
+
+import devices.Device;
+import devices.FailingPolicy;
 
 import java.util.Objects;
 
 public class StandardDevice implements Device {
-    private FailingPolicy failingPolicy;
+    private devices.FailingPolicy failingPolicy;
     private boolean on = false;
 
     public StandardDevice(FailingPolicy failingPolicy) {
